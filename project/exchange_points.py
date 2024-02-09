@@ -1,0 +1,1 @@
+exchange_points = ['Binance', 'KuCoin']
