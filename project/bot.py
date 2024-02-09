@@ -1,4 +1,4 @@
-import asyncio
+
 import os
 import time
 
@@ -24,11 +24,12 @@ storage = MemoryStorage()
 Bot.set_current(bot)
 dp = Dispatcher(bots=bot, storage=storage)
 
-
+# Функция обновления информации о комиссиях
 async def update_fees():
     async with AsyncSessionLocal() as session:
         current_time = int(time.time())
         time_1000_seconds_ago = current_time - 1000
+        # Выполнение запроса к базе данных для получения записей о комиссиях, обновленных в последние 1000 секунд
         result = await session.execute(
             select(Commission).where(
                 Commission.update_time.between(time_1000_seconds_ago, current_time)
@@ -36,7 +37,8 @@ async def update_fees():
         )
         result = result.scalars().first()
         if result:
-            return
+            return  # Если результат найден, завершаем функцию
+        # Получение новых значений комиссий от бирж
         new_k = kuco.get_trc_kucoin() or 1.5
         new_b = bina.get_trc_bin() or 1.0
         results_of_points = [new_b, new_k]

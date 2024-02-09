@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33de3793-678e-41e6-8dcc-23a0b4b238f7" name="Changes" comment="twoth">
-      <change afterPath="$PROJECT_DIR$/project/bina.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/cache/creater.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/database/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/database/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/cansel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/delete.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/exchange_point.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/keyboards/reply/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/kuco.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/states.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/utils/answer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/utils/handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/utils/storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/compare.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/compare.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/exchange_points.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/reqs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bina/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/keyboards/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
