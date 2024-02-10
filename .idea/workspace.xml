@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33de3793-678e-41e6-8dcc-23a0b4b238f7" name="Changes" comment="twoth">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/cancel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/keyboards/inline/wallets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/keyboards/inline/cansel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/keyboards/inline/exchange_point.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/keyboards/inline/exchange_point.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Dev/test_jobs/cheap_network",
+    "last_opened_file_path": "C:/Dev/petts/exchange_bot",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
