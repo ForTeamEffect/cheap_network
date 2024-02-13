@@ -1,13 +1,14 @@
 import os
 import time
 
+
 from aiogram.filters import Command, Text, StateFilter
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import SQLAlchemyError, DBAPIError
 from loguru import logger
 
 from database.models import Commission, User, Wallet
@@ -180,7 +181,17 @@ async def set_pass(message: types.Message, state: FSMContext):
                          "Создайте кошельки чтобы увидеть самые выгодные условия"
                          "транзакций по сети TRC20 на основании доступного баланса.")
 
-
+async def check_auth(message: types.Message):
+    # Проверяем, зарегистрирован ли пользователь
+    async with AsyncSessionLocal() as session:
+        try:
+            user = await session.execute(select(User).filter_by(chat_id=message.chat.id))
+            user = user.scalars().first()
+            return user
+        except DBAPIError as e:
+            logger.info("Пользователь не зарегистрирован: {}", message.from_user.id)
+            await message.answer("Зарегистрируйтесь")
+            return False
 
 @dp.message(Command('create_wallet'))
 @handler
@@ -189,17 +200,8 @@ async def choose_exchange_point(message: types.Message, state: FSMContext):
     Позволяет пользователю выбрать биржу для создания кошелька.
     """
     # Проверяем, зарегистрирован ли пользователь
-    try:
-        async with AsyncSessionLocal() as session:
-            user = await session.execute(select(User).filter_by(chat_id=message.chat.id))
-            user = user.scalars().first()
-            if not user:
-                logger.warning("Пользователь не зарегистрирован: {}", message.from_user.id)
-                return await message.answer("Зарегистрируйтесь")
-    except Exception as e:
-        logger.error("Ошибка при проверке регистрации пользователя: {}. {}", message.from_user.id, e)
-        return await message.answer("Произошла ошибка при проверке регистрации.")
-
+    if not await check_auth(message):
+        return
     # Обновляем информацию о комиссиях и предлагаем выбор биржи
     await update_fees()
     await message.answer("Выберите биржу:", reply_markup=await exchange_keyboard(state))
@@ -398,6 +400,9 @@ async def show_wallets(message: types.Message, state: FSMContext):
     """
     Отображает информацию о кошельках пользователя.
     """
+    # Проверяем, зарегистрирован ли пользователь
+    if not await check_auth(message):
+        return
     try:
         wallets_of_user, wallets_objects = await get_wallets_func(message)
 
@@ -512,10 +517,14 @@ async def handle_change_network_callback(callback_query: types.CallbackQuery, st
 
 @dp.message(Command('calculate'))
 @handler
-async def show_wallets(message: types.Message, state: FSMContext):
+async def calc(message: types.Message, state: FSMContext):
     """
     Запрашивает у пользователя сумму для расчета возможных транзакций.
     """
+    # Проверяем, зарегистрирован ли пользователь
+
+    if not await check_auth(message):
+        return
     logger.info("Запрос суммы для расчета")
     try:
         await message.answer("Введите сумму транзакции")
