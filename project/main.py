@@ -1,7 +1,5 @@
 import asyncio
 
-from aiogram import Bot
-
 from project.bot import bot, dp, update_fees
 from project.database.database import create_tables
 
